@@ -93,4 +93,28 @@ public class Notebook {
         }
         return nameMaker;
     }
+
+    public static void sortedForPrice(Notebook[] arr) {
+
+    }
+
+    public static void sortedForRam(Notebook[] arr) {
+
+    }
+
+    public static void sortedForMaker(Notebook[] arr) {
+        boolean sorted = false;
+        Notebook temp;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i].getMaker().compareTo(arr[i + 1].getMaker()) > 0) {
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    sorted = false;
+                }
+            }
+        }
+    }
 }
