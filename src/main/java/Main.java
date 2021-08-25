@@ -8,10 +8,21 @@ public class Main {
         }
 
         Notebook.sortedForPrice(notebooks);
+        for (int i = 0; i < notebooks.length - 1; i++) {
+            if(notebooks[i].getPrice() == notebooks[i+1].getPrice()){
+                Notebook.sortedForRam(notebooks);
+                break;
+            }
+            
+        }
+        for (int i = 0; i < notebooks.length - 1; i++) {
+            if(notebooks[i].getRam() == notebooks[i+1].getRam()){
+                Notebook.sortedForMaker(notebooks);
+                break;
+            }
 
-        Notebook.sortedForRam(notebooks);
+        }
 
-        Notebook.sortedForMaker(notebooks);
 
     }
 
