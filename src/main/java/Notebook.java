@@ -29,25 +29,7 @@ public class Notebook {
         return ram;
     }
 
-    @Override
-    public String toString() {
-        return "Notebook{" +
-                "id=" + id +
-                ", maker='" + maker + '\'' +
-                ", price=" + price +
-                ", ram=" + ram +
-                '}';
-    }
-
-    public static Notebook[] initNotebook(int count) {
-        Notebook[] arr = new Notebook[count];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new Notebook(i, randomMaker(), randomPrice(), randomRam());
-        }
-        return arr;
-    }
-
-    private static int randomRam() {
+    public static int randomRam() {
         Random random = new Random();
         int ram = 0;
         switch (random.nextInt(4)) {
@@ -67,11 +49,11 @@ public class Notebook {
         return ram;
     }
 
-    private static int randomPrice() {
+    public static int randomPrice() {
         return (new Random().nextInt(6) + 5) * 100;
     }
 
-    private static String randomMaker() {
+    public static String randomMaker() {
         Random random = new Random();
         String nameMaker = "";
         switch (random.nextInt(5)) {
@@ -95,11 +77,33 @@ public class Notebook {
     }
 
     public static void sortedForPrice(Notebook[] arr) {
-
+        for (int left = 0; left < arr.length; left++) {
+            Notebook n = arr[left];
+            int i = left - 1;
+            for (; i >= 0; i--) {
+                if (n.getPrice() < arr[i].getPrice()) {
+                    arr[i + 1] = arr[i];
+                } else {
+                    break;
+                }
+            }
+            arr[i + 1] = n;
+        }
     }
 
     public static void sortedForRam(Notebook[] arr) {
-
+        for (int left = 0; left < arr.length; left++) {
+            Notebook n = arr[left];
+            int i = left - 1;
+            for (; i >= 0; i--) {
+                if (n.getRam() < arr[i].getRam()) {
+                    arr[i + 1] = arr[i];
+                } else {
+                    break;
+                }
+            }
+            arr[i + 1] = n;
+        }
     }
 
     public static void sortedForMaker(Notebook[] arr) {
